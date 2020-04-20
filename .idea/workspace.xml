@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e9d014b5-5cca-4636-a91c-af87e1ca320c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/bitxiaoxia/leetcode/daily20200420/SolutionNumberOfIslands.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/bitxiaoxia/leetcode/daily20200420/description_number-of-islands.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/bitxiaoxia/leetcode/daily20200420/description_number-of-islands.md" afterDir="false" />
-    </list>
+    <list default="true" id="e9d014b5-5cca-4636-a91c-af87e1ca320c" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -95,7 +91,7 @@
       <workItem from="1587114117945" duration="6551000" />
       <workItem from="1587121518308" duration="33000" />
       <workItem from="1587368108483" duration="448000" />
-      <workItem from="1587390527783" duration="4054000" />
+      <workItem from="1587390527783" duration="4452000" />
     </task>
     <servers />
   </component>
