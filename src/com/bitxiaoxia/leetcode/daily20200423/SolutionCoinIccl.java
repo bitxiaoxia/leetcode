@@ -20,11 +20,20 @@ public class SolutionCoinIccl {
 				result += (num5 + 1);
 			}
 		}
-		result =result%1000000007;
+		result = result % 1000000007;
 		return (int) result;
 	}
 
 	public static void main(String[] args) {
-		System.out.println(waysToChange(900750));
+		int n = 0;
+		for (int i = 1; i < 200; i += 5) {
+			int m = waysToChange(i);
+			System.out.println(i + " " + m + " " + (m - n));
+			n = m;
+			if (i == 1) {
+				i--;
+			}
+		}
+
 	}
 }
