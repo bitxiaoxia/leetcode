@@ -8,7 +8,19 @@ import java.util.Random;
  */
 public class RetryTest {
 	public static void main(String[] args) {
-		testOne();
+		RetryTemplate r1 = new RetryTemplate() {
+			@Override
+			protected boolean doBiz() {
+				print("r1", this.getRetryTime());
+				return false;
+			}
+
+			@Override
+			protected void finallyDo() {
+				print("r1", this.getRetryTime());
+			}
+		}.setRetryTime(10).setSleepMills(1).setThreadName("r1");
+		r1.retry();
 	}
 
 	/**
@@ -30,7 +42,7 @@ public class RetryTest {
 				protected void finallyDo() {
 					print(name, this.getRetryTime());
 				}
-			}.setRetryTime(random.nextInt(10)).setSleepTime(1000L).setThreadName(name);
+			}.setRetryTime(random.nextInt(10)).setSleepMills(1000L).setThreadName(name);
 			retry.retry();
 		}
 	}
@@ -51,7 +63,7 @@ public class RetryTest {
 			protected void finallyDo() {
 				print("r1", this.getRetryTime());
 			}
-		}.setRetryTime(3).setSleepTime(1000).setThreadName("r1");
+		}.setRetryTime(3).setSleepMills(1000).setThreadName("r1");
 		r1.retry();
 
 		RetryTemplate r2 = new RetryTemplate() {
@@ -65,7 +77,7 @@ public class RetryTest {
 			protected void finallyDo() {
 				print("r2", this.getRetryTime());
 			}
-		}.setRetryTime(1).setSleepTime(2000).setThreadName("r2");
+		}.setRetryTime(1).setSleepMills(2000).setThreadName("r2");
 		r2.retry();
 
 		RetryTemplate r3 = new RetryTemplate() {
@@ -79,7 +91,7 @@ public class RetryTest {
 			protected void finallyDo() {
 				print("r3", this.getRetryTime());
 			}
-		}.setRetryTime(100).setSleepTime(2000).setThreadName("r3");
+		}.setRetryTime(100).setSleepMills(2000).setThreadName("r3");
 		r3.retry();
 	}
 

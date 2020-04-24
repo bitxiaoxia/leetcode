@@ -53,9 +53,9 @@ public abstract class RetryTemplate {
 	 * @param sleepTime
 	 * @return
 	 */
-	public RetryTemplate setSleepTime(long sleepTime) {
-		if (sleepTime < 0) {
-			throw new IllegalArgumentException("RetryTemplate sleepTime shouldn't be smaller than 0");
+	public RetryTemplate setSleepMills(long sleepTime) {
+		if (sleepTime <= 0) {
+			throw new IllegalArgumentException("RetryTemplate sleepTime should be bigger than 0");
 		}
 		this.sleepTime = sleepTime;
 		return this;
