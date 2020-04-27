@@ -20,5 +20,9 @@
 ```
 > https://leetcode-cn.com/problems/search-in-rotated-sorted-array/
 ### 解题思路
-二分查找，判断队尾是否比队头小，
-如果是，表示拐点在这个队列里面，否则正常二分查找即可。
+二分查找。
+两个判断条件：
+1. 判断队尾是否比队头小.表示拐点在这个队列里面，则target可能在队列中
+2. 队头<target<队尾，则target可能在队列中。
+
+否则直接返回不在队列即可。
