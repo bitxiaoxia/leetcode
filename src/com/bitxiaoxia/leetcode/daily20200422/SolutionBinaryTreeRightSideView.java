@@ -1,5 +1,7 @@
 package com.bitxiaoxia.leetcode.daily20200422;
 
+import com.bitxiaoxia.leetcode.utils.TreeNode;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,16 +31,7 @@ public class SolutionBinaryTreeRightSideView {
 		}
 	}
 
-	// Definition for a binary tree node.
-	public static class TreeNode {
-		int val;
-		TreeNode left;
-		TreeNode right;
 
-		TreeNode(int x) {
-			val = x;
-		}
-	}
 
 	public static void main(String[] args) {
 		TreeNode node1 = new TreeNode(1);
