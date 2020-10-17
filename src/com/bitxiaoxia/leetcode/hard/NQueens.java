@@ -2,9 +2,7 @@ package com.bitxiaoxia.leetcode.hard;
 
 import com.bitxiaoxia.leetcode.utils.PrintUtils;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * https://leetcode-cn.com/problems/n-queens/
@@ -13,14 +11,47 @@ import java.util.List;
 public class NQueens {
 	public static void main(String[] args) {
 		NQueens solution = new NQueens();
-		solution.solveNQueens(4);
+		System.out.println(solution.totalNQueens(4));
 	}
 	//N皇后2.https://leetcode-cn.com/problems/n-queens-ii/
 	public int totalNQueens(int n) {
 		//可以简单实用之前的代码，返回数组长度。
-		return solveNQueens(n).size();
-
+//		return solveNQueens(n).size();
 		//原来的解法由于需要记录返回结果，所以耗内存较大，这个只用返回符合条件的个数，所以重新写一个。
+		Deque<Integer> path= new ArrayDeque<>();
+		solutionCnt = 0;
+		backTrace2(path,n);
+		return solutionCnt;
+	}
+	int solutionCnt = 0;
+	public void backTrace2(Deque<Integer> path,int n){
+		if(path.size() >= n){
+			solutionCnt++;
+		}
+		boolean[] usedArr = new boolean[n];
+		int currentLine = path.size();
+		for(int line=0;line<currentLine;line++){
+			int pos = path.poll();//取出来
+
+			int lineDiff = currentLine - line;//行差
+			usedArr[pos] = true;
+			if(pos+lineDiff < n){
+				usedArr[pos+lineDiff] = true;
+			}
+			if(pos-lineDiff >=0){
+				usedArr[pos-lineDiff] = true;
+			}
+
+			path.add(pos);//重新加回去
+		}
+
+		for(int i=0;i<n;i++){
+			if(!usedArr[i]){
+				path.add(i);
+				backTrace2(path,n);
+				path.pollLast();//去除
+			}
+		}
 
 	}
 
