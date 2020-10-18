@@ -111,10 +111,4 @@ public class Contest209 {
 		}
 		return -1;
 	}
-
-	public static void changeToArr(String s) {
-		s = s.replace("[", "{");
-		s = s.replace("]", "}");
-		System.out.println(s);
-	}
 }

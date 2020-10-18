@@ -8,6 +8,12 @@ import java.util.List;
  */
 public class PrintUtils {
 
+	public static void changeToArr(String s) {
+		s = s.replace("[", "{");
+		s = s.replace("]", "}");
+		System.out.println(s);
+	}
+
 	public  static<T> void print(List<T> list){
 		if (list==null||list.size()==0){
 			System.out.println("empty list");
