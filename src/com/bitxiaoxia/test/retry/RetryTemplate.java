@@ -28,7 +28,12 @@ public abstract class RetryTemplate {
 		this.threadName = threadName;
 		return this;
 	}
-
+	private Thread shutdownThread= new Thread(() -> {
+		//目前如果有重试任务，但是主进程被杀了，不会继续重试，且不会执行finallyDo方法。
+		//finallyDo 不能放在这里。否则每次RetryTemplate被杀死都会执行一次finallyDo方法。
+		//TODO 如果主进程被意外杀死了，需要执行finallyDo方法。
+		executor.shutdown();
+	});
 	/**
 	 * 设置重试次数，允许设置0次。重试0次，意味着执行一次doBiz方法后立即执行finallyDo方法。
 	 *
@@ -85,21 +90,21 @@ public abstract class RetryTemplate {
 			this.retryTime--;
 			if (this.getRetryTime() < 0) {
 				finallyDo();
-				executor.shutdown();
+				shutdownThis();
 			}
 		} else {
 			this.retryTime=-1;
-			executor.shutdown();
+			shutdownThis();
 		}
 	}
 
+	private void shutdownThis(){
+		Runtime.getRuntime().removeShutdownHook(shutdownThread);
+		executor.shutdown();
+	}
+
 	public void retry() {
-		Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-			//目前如果有重试任务，但是主进程被杀了，不会继续重试，且不会执行finallyDo方法。
-			//finallyDo 不能放在这里。否则每次RetryTemplate被杀死都会执行一次finallyDo方法。
-			//TODO 如果主进程被意外杀死了，需要执行finallyDo方法。
-			executor.shutdown();
-		}));
+		Runtime.getRuntime().addShutdownHook(shutdownThread);
 		executor.scheduleAtFixedRate(this::runOnce, 0, sleepTime, TimeUnit.MILLISECONDS);
 	}
 
