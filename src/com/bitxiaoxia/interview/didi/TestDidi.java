@@ -42,7 +42,7 @@ public class TestDidi {
 		return builder.substring(0,builder.length()-1);
 	}
 	private TreeNode reverseNode(TreeNode root){
-		Deque<String> wordQueue = new ArrayDeque<String>;
+		Deque<String> wordQueue = new ArrayDeque<String>();
 		wordQueue.remove();
 		if (root == null){
 			return null;
