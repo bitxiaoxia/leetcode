@@ -10,11 +10,18 @@ import java.util.*;
  */
 public class Contest212 {
 	public static void main(String[] args) {
-//		PrintUtils.changeToArr("[[7,3,6],[1,4,5],[9,8,2]]");
-		int[][] arr = {{7,7,7},{7,7,7},{7,7,7}};
-		Contest212 c = new Contest212();
-//		minimumEffortPath(arr);
-		c.matrixRankTransform(arr);
+////		PrintUtils.changeToArr("[[7,3,6],[1,4,5],[9,8,2]]");
+//		int[][] arr = {{7,7,7},{7,7,7},{7,7,7}};
+//		Contest212 c = new Contest212();
+////		minimumEffortPath(arr);
+//		c.matrixRankTransform(arr);
+		Set<Integer> set = new HashSet<>();
+		set.add(1);
+		set.add(2);
+		Integer[] a = set.toArray(new Integer[0]);
+		for(int i:a){
+			System.out.println(i);
+		}
 	}
 
 	public int[] smallerNumbersThanCurrent(int[] nums) {
