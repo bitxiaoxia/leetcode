@@ -19,6 +19,31 @@ import java.util.*;
  * @date 2020/8/22 9:52
  */
 public class TestDidi {
+
+	public boolean isBT(TreeNode root){
+		//左子树  右子树
+		if(root == null){
+			return true;
+		}else if(root.left == null){
+			return calFloor(root.right ,1)<=1;
+		}else if(root.right == null){
+			return calFloor(root.left ,1)<=1;
+		}else{
+			return isBT(root.left) && isBT(root.right)
+					&& Math.abs(calFloor(root.left,1) - calFloor(root.right,1))<=1;
+		}
+	}
+
+	public int calFloor(TreeNode node,int curr){
+		if(node == null){
+			return curr;
+		}else{
+			return Math.max(calFloor(node.left,curr+1),calFloor(node.right,curr+1));
+		}
+	}
+
+
+
 	public String reverseWords(String s) {
 		List<String> wordQueue = new ArrayList<>();
 		s = s.trim();
